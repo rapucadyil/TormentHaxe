@@ -39,7 +39,7 @@ import haxe.macro.Expr;
 		
 		ManifestResources.init (config);
 		
-		app.meta["build"] = "2";
+		app.meta["build"] = "3";
 		app.meta["company"] = "HaxeFlixel";
 		app.meta["file"] = "Torment";
 		app.meta["name"] = "Torment";
@@ -58,7 +58,7 @@ import haxe.macro.Expr;
 			// display: 0,
 			element: null,
 			frameRate: 60,
-			#if !web fullscreen: false, #end
+			#if !web fullscreen: true, #end
 			height: 1080,
 			hidden: #if munit true #else false #end,
 			maximized: false,

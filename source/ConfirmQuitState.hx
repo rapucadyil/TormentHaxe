@@ -22,12 +22,11 @@ class ConfirmQuitState extends FlxState {
         super.update(elapsed);
     }
 
-    function quitCallback() : Void {
+    private function quitCallback() : Void {
         System.exit(0);
     }
 
-    function cancelCallback() : Void {
+    private function cancelCallback() : Void {
         FlxG.switchState(new MenuState());
     }
-
 }
