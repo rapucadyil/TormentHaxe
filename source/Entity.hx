@@ -15,8 +15,6 @@ class Entity extends FlxSprite {
     public var currHealth : Float;
     public var maxHealth : Float;
 
-    //private animMap : Map<String,
-
     /**
      * Creates a new Entity
      * @param X : the X position to place this entity
@@ -26,9 +24,11 @@ class Entity extends FlxSprite {
         super(X,Y);
         /* This is used for scaling */
         scale.set(0.25, 0.25);
-        loadGraphic(AssetPaths.player__png);
         /* This is used for scaling */
         FlxTween.tween(scale, { x:0.25, y:0.25 }, 0.4, { ease:FlxEase.elasticOut });
+        loadGraphic(AssetPaths.spritesheet__png, true, 800,1048);
+        animation.add("walk", [0,1,2,3,4], 6, true);
+        animation.add("idle", [0], 6, true);
         this.currHealth = CH;
         this.maxHealth = MH;
         this.x = X;
@@ -39,6 +39,8 @@ class Entity extends FlxSprite {
 
     override public function update(elapsed:Float):Void {
         movementHandler(velX * elapsed,velY * elapsed);
+        animation.play("walk");
+        super.update(elapsed);
     }
     
     /**
@@ -50,11 +52,15 @@ class Entity extends FlxSprite {
         if (FlxG.keys.enabled) {
             if (FlxG.keys.anyPressed(['LEFT', 'A'])) {
                 this.x = this.x - X;
-                this.flipX = true;
+                this.flipX = true;  
+                //animation.play("walk");   
             }
-            if (FlxG.keys.anyPressed(['RIGHT', 'D'])){
+            else if (FlxG.keys.anyPressed(['RIGHT', 'D'])){
                 this.x = this.x + X;
                 this.flipX = false;
+               // animation.play("walk");
+            }else{
+                animation.play("idle");
             }
         }
     }

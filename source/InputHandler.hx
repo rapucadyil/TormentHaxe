@@ -1,9 +1,10 @@
 package;
 import flixel.FlxSprite;
+import flixel.FlxObject;
 import flixel.FlxG;
 import flash.system.System;
 
-class InputHandler extends FlxSprite {
+class InputHandler extends FlxObject {
 
     public function new(?X:Float=0, ?Y:Float=0) : Void {
         super(X,Y);
@@ -15,7 +16,7 @@ class InputHandler extends FlxSprite {
         processUserInput();
     }
 
-    private function processUserInput() {
+    private function processUserInput() : Void {
         if (FlxG.keys.pressed.ESCAPE){
             System.exit(0);
         }
