@@ -2,7 +2,8 @@ package;
 
 import flixel.FlxState;
 import flixel.FlxSprite;
-
+import flixel.FlxG;
+import flixel.util.FlxColor;
 class PlayState extends FlxState
 {
 	var player : Entity;
@@ -10,6 +11,7 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
+		FlxG.camera.bgColor = 0xFFFFFF99;
 		player = new Entity(0, 0);
 		input = new InputHandler(0,0);
 		add(player);

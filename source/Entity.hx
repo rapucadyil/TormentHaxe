@@ -15,6 +15,8 @@ class Entity extends FlxSprite {
     public var currHealth : Float;
     public var maxHealth : Float;
 
+    //private animMap : Map<String,
+
     /**
      * Creates a new Entity
      * @param X : the X position to place this entity
@@ -46,11 +48,11 @@ class Entity extends FlxSprite {
      */
     private function movementHandler(?X:Float=0, ?Y:Float=0) {
         if (FlxG.keys.enabled) {
-            if (FlxG.keys.pressed.LEFT) {
+            if (FlxG.keys.anyPressed(['LEFT', 'A'])) {
                 this.x = this.x - X;
                 this.flipX = true;
             }
-            if (FlxG.keys.pressed.RIGHT){
+            if (FlxG.keys.anyPressed(['RIGHT', 'D'])){
                 this.x = this.x + X;
                 this.flipX = false;
             }
